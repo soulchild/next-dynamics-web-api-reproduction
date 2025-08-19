@@ -1,0 +1,19 @@
+{
+  "name": "swc-dynamics",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "swc index.js -o out/output.js && node out/output.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dynamics-web-api": "^2.3.1"
+  },
+  "devDependencies": {
+    "@swc/core": "1.11.24",
+    "@swc/cli": "^0.7.8"
+  }
+}
