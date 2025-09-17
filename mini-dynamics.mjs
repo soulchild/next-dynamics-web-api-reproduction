@@ -1,5 +1,3 @@
-var __privateGet = (obj, member) => member.get(obj);
-var __privateAdd = (obj, member, value) => member.set(obj, value);
 var _config = new WeakMap();
 
 var getApiUrl = (serverUrl, apiConfig) => {
@@ -21,14 +19,14 @@ function mergeConfig(internalConfig, config) {
 
 export class DynamicsWebApi {
   constructor(config) {
-    __privateAdd(this, _config, {
+    _config.set(this, {
       serverUrl: null,
       dataApi: {
         path: "data",
         url: "",
       },
     });
-    mergeConfig(__privateGet(this, _config), config);
-    return __privateGet(this, _config);
+    mergeConfig(_config.get(this), config);
+    return _config.get(this);
   }
 }
