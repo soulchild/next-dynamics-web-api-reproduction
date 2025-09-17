@@ -1,9 +1,8 @@
-import { DynamicsWebApi } from "dynamics-web-api";
+import assert from "node:assert";
+import { DynamicsWebApi } from "../../../mini-dynamics.mjs";
 
-export const dynamicsWebApi = new DynamicsWebApi({
-  serverUrl: "https://test.api.crm4.dynamics.com",
-  dataApi: {
-    version: "9.1",
-  },
-  onTokenRefresh: async () => "fakeToken",
-});
+assert(
+  new DynamicsWebApi({
+    serverUrl: "https://test.api.crm4.dynamics.com",
+  }).dataApi.url === "https://test.api.crm4.dynamics.com/api/data/"
+);
