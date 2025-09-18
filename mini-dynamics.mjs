@@ -1,6 +1,5 @@
-var _config = new WeakMap();
-
 var getApiUrl = (serverUrl, apiConfig) => {
+  // Removing this condition fixes the problem
   if (true) {
     let url = "api";
     if (apiConfig.path) {
@@ -15,18 +14,17 @@ function mergeConfig(internalConfig, config) {
     config.serverUrl,
     internalConfig.dataApi
   );
+  return internalConfig;
 }
 
-export class DynamicsWebApi {
-  constructor(config) {
-    _config.set(this, {
+export default (config) =>
+  mergeConfig(
+    {
       serverUrl: null,
       dataApi: {
         path: "data",
         url: "",
       },
-    });
-    mergeConfig(_config.get(this), config);
-    return _config.get(this);
-  }
-}
+    },
+    config
+  );
